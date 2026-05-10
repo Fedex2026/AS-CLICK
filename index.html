@@ -3,211 +3,134 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AS CLICK</title>
+  <title>3 WEB | AS CLICK · AUTO PROTECT · TJD</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header class="topbar">
-  <div class="logo">
-    <span>AS</span> CLICK
-    <small>ASISTENCIA, PROTECCIÓN Y SOLUCIONES</small>
-  </div>
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <h1>3 WEB</h1>
+      <p>AS CLICK · AUTO PROTECT · TJD</p>
 
-  <nav>
-    <a href="#">INICIO</a>
-    <a href="#">SERVICIOS</a>
-    <a href="#">AUTO PROTEC</a>
-    <a href="#">CORRALONES</a>
-    <a href="#">TJD</a>
-    <a href="#">CONTACTO</a>
-  </nav>
+      <input id="email" type="email" placeholder="Correo electrónico" />
+      <input id="password" type="password" placeholder="Contraseña" />
 
-  <button class="account-btn">MI CUENTA 👤</button>
-</header>
+      <button onclick="login()">Iniciar sesión</button>
+      <button class="secondary" onclick="register()">Crear cuenta</button>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>AS CLICK</h1>
-    <h2>ASISTENCIA, SEGURIDAD Y PROTECCIÓN<br>VEHICULAR EN UN SOLO LUGAR</h2>
-    <p>Reporta, solicita y recibe ayuda al instante.<br>Estamos contigo <span>24/7.</span></p>
-
-    <div class="hero-buttons">
-      <button class="gold">🎁 SOLICITAR MEMBRESÍA</button>
-      <button class="outline">🚨 BOTÓN DE PÁNICO</button>
+      <small id="loginMsg"></small>
     </div>
   </div>
-</section>
 
-<main class="container">
+  <div id="appScreen" class="app hidden">
+    <header>
+      <div>
+        <h2>Panel Principal</h2>
+        <p>Membresía única para AS CLICK, AUTO PROTECT y TJD</p>
+      </div>
+      <button onclick="logout()" class="logout">Salir</button>
+    </header>
 
-  <section class="services">
-    <h2>¿QUÉ NECESITAS?</h2>
+    <section class="hero">
+      <h1>Tu ecosistema de asistencia, protección y negocios</h1>
+      <p>Reportes de siniestros, autos robados/localizados/recuperados y directorio TJD.</p>
+    </section>
 
-    <div class="services-grid">
-      <div class="service green">
-        <div class="icon">🚗✅</div>
-        <h3>DAR DE ALTA<br>MI AUTO CON<br>MEMBRESÍA</h3>
-        <button>DAR DE ALTA</button>
+    <section class="grid">
+      <div class="card" onclick="showSection('asclick')">
+        <h3>AS CLICK</h3>
+        <p>Ajustador, abogado, auxilio vial, grúa independiente, botón pánico y monta choques.</p>
       </div>
 
-      <div class="service green">
-        <div class="icon">👨‍💼</div>
-        <h3>NECESITO<br>AJUSTADOR</h3>
-        <button>SOLICITAR</button>
+      <div class="card" onclick="showSection('autoprotect')">
+        <h3>AUTO PROTECT</h3>
+        <p>Autos robados, localizados, recuperados y enlace a Zona de Corralón.</p>
       </div>
 
-      <div class="service blue">
-        <div class="icon">🛻</div>
-        <h3>AUXILIO VIAL</h3>
-        <ul>
-          <li>PASO DE CORRIENTE</li>
-          <li>CAMBIO DE LLANTA</li>
-          <li>SURTIR GASOLINA</li>
-        </ul>
-        <button>SOLICITAR</button>
+      <div class="card" onclick="showSection('tjd')">
+        <h3>TJD</h3>
+        <p>Directorio de negocios, oficios, tarjetas y promoción local.</p>
       </div>
+    </section>
 
-      <div class="service purple">
-        <div class="icon">⚖️</div>
-        <h3>NECESITO<br>ABOGADO</h3>
-        <button>SOLICITAR</button>
-      </div>
+    <main>
+      <section id="asclick" class="module hidden">
+        <h2>AS CLICK</h2>
 
-      <div class="service orange">
-        <div class="icon">🚚</div>
-        <h3>NECESITO<br>GRÚA</h3>
-        <button>SOLICITAR</button>
-        <small>*Servicio independiente, costo adicional.</small>
-      </div>
+        <div class="form-box">
+          <select id="asServicio">
+            <option value="">Selecciona servicio</option>
+            <option value="Ajustador">Ajustador</option>
+            <option value="Abogado">Abogado</option>
+            <option value="Paso de corriente">Paso de corriente</option>
+            <option value="Cambio de llanta">Cambio de llanta</option>
+            <option value="Gasolina">Surtir gasolina</option>
+            <option value="Grúa">Grúa independiente</option>
+            <option value="Monta choques">Monta choques</option>
+            <option value="Botón pánico">Botón pánico</option>
+          </select>
 
-      <div class="service red">
-        <div class="icon">💥🚗</div>
-        <h3>BOTÓN<br>MONTA<br>CHOQUES</h3>
-        <button>REPORTAR</button>
-      </div>
-    </div>
-  </section>
+          <input id="asNombre" placeholder="Nombre del cliente" />
+          <input id="asTelefono" placeholder="Teléfono" />
+          <input id="asVehiculo" placeholder="Vehículo" />
+          <input id="asUbicacion" placeholder="Ubicación o referencia" />
 
-  <section class="dashboard">
-    <div class="card membership">
-      <h2>MEMBRESÍA AS CLICK</h2>
-      <p>Precio normal:</p>
-      <strong>$1,800 MXN</strong>
-      <p>Promoción primeros 50 miembros:</p>
-      <h3>$999 MXN</h3>
-      <p>por 1 año</p>
-      <p>Incluye todos los beneficios de AS CLICK + AUTO PROTEC + TJD</p>
-      <button>CONTRATAR AHORA</button>
-    </div>
-
-    <div class="card vehicle">
-      <div class="card-head">
-        <h2>MI VEHÍCULO</h2>
-        <a href="#">VER TODOS</a>
-      </div>
-
-      <div class="vehicle-box">
-        <h3>Nissan Versa 2020</h3>
-        <div class="car-img">🚘</div>
-        <div class="plate">ABC-123-D<br><span>CDMX</span></div>
-        <p>Color: Gris</p>
-        <p>Número de serie:<br>3N1CN7AD0LK123456</p>
-        <p>Fecha de registro:<br>20/05/2024</p>
-        <button>VER MI EXPEDIENTE</button>
-      </div>
-    </div>
-
-    <div class="card plan">
-      <h2>MIEMBRESÍA <span>ACTIVA</span></h2>
-      <div class="shield">🛡️</div>
-      <p>Vigencia:<br>20/05/2024 - 20/05/2025</p>
-      <ul>
-        <li>AS CLICK</li>
-        <li>AUTO PROTEC</li>
-        <li>TJD (1 año)</li>
-        <li>Descuentos en servicios</li>
-        <li>Acceso a recompensas</li>
-      </ul>
-      <button>VER BENEFICIOS</button>
-    </div>
-
-    <div class="card quick">
-      <h2>ENLACES RÁPIDOS</h2>
-      <a>Mis reportes ›</a>
-      <a>Historial de servicios ›</a>
-      <a>Botón de pánico ›</a>
-      <a>Mis vehículos ›</a>
-      <a>Mis documentos ›</a>
-      <a>Configuración ›</a>
-    </div>
-
-    <div class="card reports">
-      <div class="card-head">
-        <h2>MIS REPORTES RECIENTES</h2>
-        <a href="#">VER TODOS</a>
-      </div>
-
-      <div class="report green-r">
-        <span>👤</span>
-        <div><b>Ajustador</b><p>ACC-2024-00125</p></div>
-        <small>20/05/2024 - 11:42 PM<br><em>ATENDIDO</em></small>
-      </div>
-
-      <div class="report blue-r">
-        <span>🔧</span>
-        <div><b>Auxilio vial</b><p>ACC-2024-00124</p></div>
-        <small>18/05/2024 - 08:15 PM<br><em>COMPLETADO</em></small>
-      </div>
-
-      <div class="report purple-r">
-        <span>⚖️</span>
-        <div><b>Abogado</b><p>ACC-2024-00123</p></div>
-        <small>15/05/2024 - 04:30 PM<br><em>EN PROCESO</em></small>
-      </div>
-
-      <div class="auto-banner">
-        <h3>AUTO PROTEC</h3>
-        <p>Protege tu vehículo y recibe alertas de robos en tiempo real.</p>
-        <button>VER AUTOS ROBADOS</button>
-      </div>
-    </div>
-
-    <div class="side-stack">
-      <div class="card corralon">
-        <h2>🚕 ZONA CORRALÓN</h2>
-        <p>Busca tu vehículo en corralones asociados.</p>
-        <div class="search-mini">
-          <input placeholder="Ingresa placas o número de serie" />
-          <button>BUSCAR</button>
+          <button onclick="guardarAsClick()">Enviar reporte</button>
         </div>
-        <button class="outline-btn">VER CORRALONES</button>
-      </div>
 
-      <div class="card tjd">
-        <h2>🏪 TJD</h2>
-        <p>Publica tu negocio, oficio o servicio por 1 año.</p>
-        <button class="outline-btn">IR A TJD</button>
-      </div>
-    </div>
-  </section>
+        <div id="listaAsClick" class="list"></div>
+      </section>
 
-</main>
+      <section id="autoprotect" class="module hidden">
+        <h2>AUTO PROTECT</h2>
 
-<footer>
-  <div>🎧 <b>CENTRAL AS CLICK</b><br>Todo llega a nuestra central 24/7 para ayudarte mejor.</div>
-  <div>🟢 WhatsApp<br>55 1234 5678</div>
-  <div>🔵 Llamada<br>55 1234 5678</div>
-  <div>✉️ Correo<br>info@asclick.com</div>
-  <div>Síguenos<br>🔵 🟣 🎵 ▶️</div>
-</footer>
+        <div class="tabs">
+          <button onclick="setAutoTipo('robados')">Robados</button>
+          <button onclick="setAutoTipo('localizados')">Localizados</button>
+          <button onclick="setAutoTipo('recuperados')">Recuperados</button>
+          <button onclick="abrirCorralon()">Zona de Corralón</button>
+        </div>
 
-<div class="legal">
-  © 2024 AS CLICK. Todos los derechos reservados.
-  <span>Términos y condiciones</span>
-  <span>Aviso de privacidad</span>
-</div>
+        <div class="form-box">
+          <input id="autoMarca" placeholder="Marca" />
+          <input id="autoSubmarca" placeholder="Submarca" />
+          <input id="autoPlacas" placeholder="Placas" />
+          <input id="autoSerie" placeholder="Serie" />
+          <input id="autoEstado" placeholder="Estado de la república" />
+          <input id="autoFoto" placeholder="URL de foto" />
+          <select id="autoRecompensa">
+            <option value="no">Sin recompensa</option>
+            <option value="si">Con recompensa</option>
+          </select>
 
-<script src="script.js"></script>
+          <button onclick="guardarAuto()">Guardar auto</button>
+        </div>
+
+        <h3 id="autoTitulo">Autos robados</h3>
+        <div id="listaAutos" class="list"></div>
+      </section>
+
+      <section id="tjd" class="module hidden">
+        <h2>TJD</h2>
+
+        <div class="form-box">
+          <input id="tjdNombre" placeholder="Nombre del negocio" />
+          <input id="tjdCategoria" placeholder="Categoría" />
+          <input id="tjdTelefono" placeholder="Teléfono" />
+          <input id="tjdWhatsapp" placeholder="WhatsApp" />
+          <input id="tjdDireccion" placeholder="Dirección" />
+          <input id="tjdOferta" placeholder="Oferta o promoción" />
+          <input id="tjdFoto" placeholder="URL de foto" />
+
+          <button onclick="guardarTJD()">Guardar negocio</button>
+        </div>
+
+        <div id="listaTJD" class="list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
